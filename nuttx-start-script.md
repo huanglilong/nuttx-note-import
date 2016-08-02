@@ -20,7 +20,7 @@ CONFIG\_NSH\_ROMFSDEVNO=0 \(default value\)
 
 CONFIG\_NSH\_ROMFSSECTSIZE=128
 
-CONFIG\_NSH\_ARCHROMFS=y \(use [stm32f429i-disco/include/nsh_romfsimg.h](https://github.com/huanglilong/nuttx/blob/master/configs/stm32f429i-disco/include/nsh_romfsimg.h)\)
+CONFIG\_NSH\_ARCHROMFS=y \(use [stm32f429i-disco\/include\/nsh\_romfsimg.h](https://github.com/huanglilong/nuttx/blob/master/configs/stm32f429i-disco/include/nsh_romfsimg.h)\)
 
 [MORE INFO](http://nuttx.org/Documentation/NuttShell.html#startupscript)
 
@@ -34,6 +34,7 @@ $ genromfs -f romfs\_img -d etc
 
 $ xxd -i romfs\_img &gt; nsh\_romfsimg.h
 
-copy nsh_romfsimg.h to configs/stm32f429i-disco/include directory
+copy nsh\_romfsimg.h to configs\/stm32f429i-disco\/include directory
 
 ![](/assets/nsh_etc_rcS.png)
+
