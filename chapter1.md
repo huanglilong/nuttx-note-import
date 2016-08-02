@@ -4,10 +4,10 @@
 
 first you should download nuttx source code
 
-* $ git clone [https:\/\/bitbucket.org\/nuttx\/apps](https://bitbucket.org/nuttx/apps*)
-* $ git clone [https:\/\/bitbucket.org\/nuttx\/nuttx](https://bitbucket.org/nuttx/nuttx*)
-* $ cd nuttx\/tools
-* $ .\/configure.sh stm32f429i-disco\/nsh
+* $ git clone [https://bitbucket.org/nuttx/apps](https://bitbucket.org/nuttx/apps)
+* $ git clone [https://bitbucket.org/nuttx/nuttx](https://bitbucket.org/nuttx/nuttx)
+* $ cd nuttx/tools
+* $ ./configure.sh stm32f429i-disco/nsh
 
 ### 2. build nuttx
 
