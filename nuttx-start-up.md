@@ -97,14 +97,17 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   g_lastpid = 0;
   for(i=0; i < CONFIG_MAX_TASKS; i++)
   {
-      g_pidhash[i].tcb = NULL;
-      g_pidhash[i].pid = INVALID_PROCESS_ID;
+     g_pidhash[i].tcb = NULL;
+     g_pidhash[i].pid = INVALID_PROCESS_ID;
   }
 
   /* Initialize the IDLE task TCB */
   hashndx = PIDHASH(g_lastpid); // force task's ID in the valid range
   g_pidhash[hashndx].tcb = &g_idletcb[cpu].cmn; // TCB's common part
   g_pidhash[hashndx].pid = g_lastpid;           // =0
+  bzero((void *)&g_idletcb[cpu], sizeof(struct task_tcb_s));  // clear all fileds
+  g_idletcb[cpu].cmn.pid = g_lastpid;
+  g_idletcb[cpu].cmn.task_state = TSTATE_TASK_RUNNING;        // task state
   g
   ```
 
