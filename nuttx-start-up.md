@@ -82,7 +82,7 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
 
 ### 3. Nuttx init and start up
 
-1. nuttx\/sched\/init\/os\_start.c
+1. nuttx/sched/init/os_start.c
 
   ```
   /* Initialize RTOS Data */
@@ -145,7 +145,7 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   /* IDLE task loop */
   for(;;)
   {
-      up_idle();
+     up_idle();
   }
   ```
 
