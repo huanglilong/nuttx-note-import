@@ -93,7 +93,7 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   dq_init(&g_waitingformqnotfull);
   dq_init(&g_waitingformqnotempty);
 
-  /* Initialize process IDS */
+  /* Initialize process IDs */
   g_lastpid = 0;
   for(i=0; i < CONFIG_MAX_TASKS; i++)
   {
@@ -138,7 +138,15 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
 
   /* processor specific details of running the operating system will be handled here */
   up_initialize();
-  g
+
+  /*start user's app, Create initial tasks and bring-up the system */
+  os_bringup();
+
+  /* IDLE task loop */
+  for(;;)
+  {
+      up_idle();
+  }
   ```
 
 
