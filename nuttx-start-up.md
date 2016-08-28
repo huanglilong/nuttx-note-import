@@ -145,8 +145,9 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   /* IDLE task loop */
   for(;;)
   {
-    up_idle();
+   up_idle();
   }
   ```
 
+  ![](/assets/dp_queue_s.png)
 
