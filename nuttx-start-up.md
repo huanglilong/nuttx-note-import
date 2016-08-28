@@ -87,6 +87,24 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   ```
   /* Initialize RTOS Data */
   dp_init(&g_readytorun);
+  dq_init(&g_pendingtasks);
+  dq_init(&g_waitingforsemaphore);
+  dq_init(&g_waitingforsignal);
+  dq_init(&g_waitingformqnotfull);
+  dq_init(&g_waitingformqnotempty);
+
+  /* Initialize process IDS */
+  g_lastpid = 0;
+  for(i=0; i < CONFIG_MAX_TASKS; i++)
+  {
+      g_pidhash[i].tcb = NULL;
+      g_pidhash[i].pid = INVALID_PROCESS_ID;
+  }
+
+  /* Initialize the IDLE task TCB */
+  hashndx = PIDHASH(g_lastpid); // force task's ID in the valid range
+  g_pidhash[hashndx].tcb = &g_idletcb[cpu].cmn; // TCB's common part
+  g_pidhash[hashndx].pid = g_lastpid;           // =0
   g
   ```
 
