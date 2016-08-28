@@ -37,13 +37,13 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
 
 **Cortex-M4** core is a high performance embedded processor with a full-featured **ARMv7-M** instruction set. in nuttx source tree, we can find **ARMv7-M' **s port\(nuttx\/arch\/arm\/armv7-m\).
 
-1. STM32F429 start from vector table\(reset exception handler\) on reset, this part code can find in arch\/arm\/armv7-m\/\_\__**up-vectors.c**_
+1. STM32F429 start from vector table\(reset exception handler\) on reset, this part code can find in arch\/arm\/armv7-m\/\_\_**_up-vectors.c_**
 
   ```c
   unsigned _vectors[] __attribute__((section(".vertors"))) = {
-    IDLE_STACK,             /* Initial stack */
-    (unsigned)&__start,     /* Reset exception handler */
-    [2 ... (15 + ARMV7M_PERIPHERAL_INTERRUPTS)] = (unsigned)&exception_common  /* all others point to genertic handler */
+   IDLE_STACK,             /* Initial stack */
+   (unsigned)&__start,     /* Reset exception handler */
+   [2 ... (15 + ARMV7M_PERIPHERAL_INTERRUPTS)] = (unsigned)&exception_common  /* all others point to genertic handler */
   } 
   ```
 
@@ -53,6 +53,12 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
 
 2. nuttx\/arch\/arm\/src\/stm32\/armv7-m\/stm32\_start.c
 
-  * 
+  ```c
+  stm32_clockconfig();        // set up clock, HSE
+  stm32_fpuconfig();          // FPU init
+  stm32_lowsetup();           // set up serial port for console output
+  stm32_gpioinit();           // remap gpio's alternative functions, accoring to .config
+  E
+  ```
 
 
