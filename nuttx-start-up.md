@@ -128,6 +128,16 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   /* Initialize RTOS facilities */
   sem_initialize();
   task_initialize();
+  irq_initialize(); // Point all interrupt vectors to the unexpected interrupt
+  wd_initialize();
+  clock_initialize();
+  timer_initialize();
+  sig_initialize();
+  mq_initialize();
+  fs_initialize();
+
+  /* processor specific details of running the operating system will be handled here */
+  up_initialize();
   g
   ```
 
