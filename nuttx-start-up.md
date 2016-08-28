@@ -97,8 +97,8 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   g_lastpid = 0;
   for(i=0; i < CONFIG_MAX_TASKS; i++)
   {
-   g_pidhash[i].tcb = NULL;
-   g_pidhash[i].pid = INVALID_PROCESS_ID;
+  g_pidhash[i].tcb = NULL;
+  g_pidhash[i].pid = INVALID_PROCESS_ID;
   }
 
   /* Initialize the IDLE task TCB */
@@ -113,7 +113,21 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   g_idletcb[cpu].cmn.start = (start_t)os_start;
   g_idletcb[cpu].cmn.entry.main = (main_t)os_start;
 
-  /* IDLE is kernel thread */
+  /* IDLE task is kernel thread */
+  g_idletcb[cpu].cmn.flags = TCB_FLAG_TTYPE_KERNEL;
+
+  /* IDLE task's name and args */
+  g_idleargv[cpu][1] = NULL;                 // no args
+  g_idletcb[cpu].argv = &g_idleargv[cpu][0]; // task's name + args
+
+  /* Add IDLE task's TCB to the head of ready to run list */
+  tasklist = TLIST_HEAD(TSTATE_TASK_RUNNING);               // get g_readytorun list
+  dq_addfirst((FAR dq_entry_t *)&g_idletcb[cpu], tasklist); // add idle task's TCB into g_readytorun list
+  up_initial_state(&g_idletcb[cpu].cmn);                    // init TCB's processor-specific registers part
+
+  /* Initialize RTOS facilities */
+  sem_initialize();
+  task_initialize();
   g
   ```
 
