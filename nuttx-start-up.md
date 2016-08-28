@@ -97,8 +97,8 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   g_lastpid = 0;
   for(i=0; i < CONFIG_MAX_TASKS; i++)
   {
-    g_pidhash[i].tcb = NULL;
-    g_pidhash[i].pid = INVALID_PROCESS_ID;
+   g_pidhash[i].tcb = NULL;
+   g_pidhash[i].pid = INVALID_PROCESS_ID;
   }
 
   /* Initialize the IDLE task TCB */
@@ -112,6 +112,8 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   /* Set IDLE entry point */
   g_idletcb[cpu].cmn.start = (start_t)os_start;
   g_idletcb[cpu].cmn.entry.main = (main_t)os_start;
+
+  /* IDLE is kernel thread */
   g
   ```
 
