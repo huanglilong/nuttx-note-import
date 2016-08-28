@@ -37,7 +37,7 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
 
 **Cortex-M4** core is a high performance embedded processor with a full-featured **ARMv7-M** instruction set. in nuttx source tree, we can find **ARMv7-M' **s port\(nuttx\/arch\/arm\/armv7-m\).
 
-1. STM32F429 start from vector table\(reset exception handler\) on reset, this part code can find in arch\/arm\/armv7-m\/\_\_up-vectors.c
+1. STM32F429 start from vector table\(reset exception handler\) on reset, this part code can find in arch/arm/armv7-m/__up-vectors.c
 
   ```c
   unsigned _vectors[] __attribute__((section(".vertors"))) = {
@@ -51,7 +51,7 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   * set up reset exception handler
   * set up all other exceptions to generic handler, for safety
 
-2. nuttx\/arch\/arm\/src\/stm32\/armv7-m\/stm32\_start.c
+2. nuttx/arch/arm/src/stm32/armv7-m/stm32_start.c
 
   ```c
   /* Set up clock, init FPU and serial port */
@@ -82,7 +82,7 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
 
 ### 3. Nuttx init and start up
 
-1. nuttx\/sched\/init\/os\_start.c
+1. nuttx/sched/init/os_start.c
 
   ```c
   /* Initialize RTOS Data */
