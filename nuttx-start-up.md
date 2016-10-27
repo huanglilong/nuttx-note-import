@@ -35,7 +35,7 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
 
 ### 2. Start up
 
-**Cortex-M4** core is a high performance embedded processor with a full-featured **ARMv7-M** instruction set. in nuttx source tree, we can find **ARMv7-M' **s port\(nuttx/arch/arm/armv7-m).
+**Cortex-M4** core is a high performance embedded processor with a full-featured **ARMv7-M** instruction set. in nuttx source tree, we can find **ARMv7-M' **s port\(nuttx\/arch\/arm\/armv7-m\).
 
 1. STM32F429 start from vector table\(reset exception handler\) on reset, this part code can find in arch\/arm\/armv7-m\/\_\_up-vectors.c
 
@@ -149,6 +149,6 @@ It includes an ST-LINK\/V2 or ST-LINK\/V2-B embedded debug tool, a 2.4" QVGA TFT
   }
   ```
 
-  ![](/assets/dp_queue_s.png)
+
 
 
